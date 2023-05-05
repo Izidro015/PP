@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/*Extra: Cebolinha, o famoso personagem de Mauricio de Sousa, é bem conhecido pela sua
+forma de falar “elado”. Cebolinha quando fala, troca o R pelo L. Essa condição é denominada
+dislalia. A dislalia é um distúrbio que acomete a fala, caracterizado pela dificuldade em articular
+as palavras. A pessoa portadora de dislalia, troca as palavras por outras similares na pronuncia,
+fala erroneamente as palavras, omitindo ou trocando as letras.
+Considerando o tipo de dislalia do Cebolinha, faça um programa em C que, dada uma
+string de entrada, gere uma string de saída com todos ‘r’ e ‘rr’ trocados por ‘l’, exceto para os
+casos que o ‘r’ está no final das palavras.
+ Exemplos:
+1. Perguntar se eu quero comida, é tipo perguntar se eu quero dinheiro!
+Pelguntar se eu quelo comida, é tipo pelguntar se eu quelo dinheilo!
+2. Dinheiro não traz felicidade, mas, eu nem me importo de viver triste comprando roupas em París!
+Dinheilo não tlaz felicidade, mas, eu nem me impolto de viver tliste complando loupas em Palis!
+3. Quem passa boa impressão é impressora, eu só passo vergonha mesmo...
+Quem passa boa implessão é implessola, eu só passo velgonha mesmo...
+ Obs.: Utilize a função “fgets” para fazer a leitura da string de entrada.*/
+
+int main(){
+    char frase1[100], frase2[100];
+    int i,tamanho;
+    printf("Digite a frase: ");
+    fgets/*sobrescreve*/(frase1, 100, stdin/*saída, geralmente teclado*/);
+    strcpy(frase2,frase1);
+    tamanho=strlen(frase1);
+    for(i=0;i<tamanho;i++){
+        frase2[i];
+        if(frase2[i] == 'r'){
+            frase2[i]='l';
+        }if(frase2[i] == 'R'){
+            frase2[i]='L';
+        }
+        if((frase2[i] == 'r') && (frase2[i+1] == 'r')){
+            frase2[i]='l';
+            frase2[i+1]='l';
+        }if((frase2[i] == 'R') && (frase2[i+1] == 'R')){
+            frase2[i]='L';
+            frase2[i+1]='L';
+        }
+        if(frase2[i+1]==' ' || frase2[i+1] == '\0'){
+            frase2[i] == 'r';
+        }
+    }
+    fputs(frase2,stdout);
+    return 0;
+}
